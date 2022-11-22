@@ -4,7 +4,6 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
@@ -20,7 +19,7 @@ public final class Constants {
   
     
     // Controller Ports
-    public static int XboxController0 = 0;
+    public static int Xbox0 = 0;
     // public static int XboxController1 = 1;
 
     public static Double motorPower = 0.75;

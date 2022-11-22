@@ -4,7 +4,7 @@
 
 package frc.robot;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
+// import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.XboxController;
@@ -37,7 +37,7 @@ public class Robot extends TimedRobot {
     //m_robotContainer = new RobotContainer();
     drivetrain = new Drivetrain();
     
-    XboxController0 = new XboxController(Constants.XboxController0);
+    XboxController0 = new XboxController(Constants.Xbox0);
     // XboxController1 = new XboxController(Constants.XboxController1);
     }
 
