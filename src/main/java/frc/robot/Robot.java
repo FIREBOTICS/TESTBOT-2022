@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.subsystems.Catapult;
 import frc.robot.subsystems.Drivetrain;
 
 /**
@@ -23,6 +24,7 @@ public class Robot extends TimedRobot {
 
   //private RobotContainer m_robotContainer;
   public static Drivetrain drivetrain;
+  public static Catapult catapult;
   public static XboxController XboxController0;
   public static XboxController XboxController1;
 
@@ -97,12 +99,6 @@ public class Robot extends TimedRobot {
     double getLeftY = -XboxController0.getLeftY();
     double getRightY = XboxController0.getRightY();
 
-    // RobotContainer.newVictor.set(ControlMode.PercentOutput, getLeftY);
-    // RobotContainer.newVictor1.set(ControlMode.PercentOutput, getLeftY);
-
-    // RobotContainer.newVictor2.set(ControlMode.PercentOutput, getRightY);
-    // RobotContainer.newVictor3.set(ControlMode.PercentOutput, getRightY);
-    //RobotContainer.m_drivetrain.drive(getLeftY,getRightY);
     drivetrain.drive(getLeftY,getRightY);
   }
 
