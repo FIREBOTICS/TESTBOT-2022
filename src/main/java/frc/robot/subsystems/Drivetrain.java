@@ -19,8 +19,8 @@ public class Drivetrain extends SubsystemBase {
         // newVictor2.set(ControlMode.PercentOutput, rightY*Constants.motorPower);
         // newVictor3.set(ControlMode.PercentOutput, rightY*Constants.motorPower);
 
-        leftVictors.set(ControlMode.PercentOutput, leftY*Constants.motorPower);
-        rightVictors.set(ControlMode.PercentOutput, rightY*Constants.motorPower);
+        leftVictors.set(ControlMode.PercentOutput, -leftY*Constants.motorPower);
+        rightVictors.set(ControlMode.PercentOutput, -rightY*Constants.motorPower);
     
     }
  
