@@ -17,7 +17,14 @@ public class Launch extends CommandBase {
   public Launch(Catapult catapult) {
     m_catapult = catapult;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(catapult);
+    addRequirements(m_catapult);
+  }
+
+  @Override
+  public void initialize() {
 
   }
+
+  // @Override
+  // public void 
 }
