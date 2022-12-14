@@ -4,8 +4,8 @@
 
 package frc.robot;
 
-// import com.ctre.phoenix.motorcontrol.ControlMode;
-
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -24,9 +24,10 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   //private RobotContainer m_robotContainer;
-  public static Drivetrain m_drivetrain;
-  public static Catapult m_catapult;
-  public static XboxController XboxController0;
+  public static Drivetrain m_drivetrain = new Drivetrain();
+  public static Catapult m_catapult = new Catapult();
+  public static Compressor phCompressor = new Compressor(1, PneumaticsModuleType.REVPH);
+  public static XboxController XboxController0 = new XboxController(Constants.Xbox0);;
   public static XboxController XboxController1;
 
 
@@ -38,11 +39,10 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
+
+    phCompressor.enableDigital();
+
     //m_robotContainer = new RobotContainer();
-    m_drivetrain = new Drivetrain();
-    m_catapult = new Catapult();
-    
-    XboxController0 = new XboxController(Constants.Xbox0);
     // XboxController1 = new XboxController(Constants.XboxController1);
     }
 
