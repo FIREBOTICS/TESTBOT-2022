@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.RunCommand;
 import frc.robot.subsystems.Catapult;
 import frc.robot.subsystems.Drivetrain;
 
@@ -23,10 +24,11 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   //private RobotContainer m_robotContainer;
-  public static Drivetrain drivetrain;
-  public static Catapult catapult;
+  public static Drivetrain m_drivetrain;
+  public static Catapult m_catapult;
   public static XboxController XboxController0;
   public static XboxController XboxController1;
+
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -37,7 +39,8 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     //m_robotContainer = new RobotContainer();
-    drivetrain = new Drivetrain();
+    m_drivetrain = new Drivetrain();
+    m_catapult = new Catapult();
     
     XboxController0 = new XboxController(Constants.Xbox0);
     // XboxController1 = new XboxController(Constants.XboxController1);
@@ -96,10 +99,17 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    double getLeftY = -XboxController0.getLeftY();
+    double getLeftY = XboxController0.getLeftY();
     double getRightY = XboxController0.getRightY();
 
-    drivetrain.drive(getLeftY,getRightY);
+    new RunCommand(() -> m_drivetrain.drive(
+        getLeftY,
+        getRightY),
+      m_drivetrain);
+    
+    m_catapult.setDefaultCommand(
+      new RunCommand(() -> m_catapult.runCatapult(XboxController0.getLeftBumper()))
+    );
   }
 
   @Override

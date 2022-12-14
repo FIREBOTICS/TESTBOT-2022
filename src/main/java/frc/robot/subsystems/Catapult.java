@@ -9,12 +9,8 @@ import frc.robot.Constants;
 public class Catapult extends SubsystemBase {
     private final Solenoid m_Solenoid = new Solenoid(PneumaticsModuleType.REVPH, Constants.solenoidChannel);
 
-    public void retract() {
-        m_Solenoid.set(Constants.solenoidRetract);
+    public void runCatapult(boolean extend) {
+        m_Solenoid.set(extend);
     }
-    public void launch() {
-        m_Solenoid.set(Constants.solenoidExtend);
-    }
-
 
 }
