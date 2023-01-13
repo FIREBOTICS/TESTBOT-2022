@@ -26,8 +26,8 @@ public class Robot extends TimedRobot {
   //private RobotContainer m_robotContainer;
   public static Drivetrain m_drivetrain = new Drivetrain();
   public static Catapult m_catapult = new Catapult();
-  public static Compressor phCompressor = new Compressor(1, PneumaticsModuleType.REVPH);
-  public static XboxController XboxController0 = new XboxController(Constants.Xbox0);;
+  public static Compressor pcmCompressor = new Compressor(0, PneumaticsModuleType.CTREPCM);
+  public static XboxController XboxController0 = new XboxController(Constants.Xbox0);
   public static XboxController XboxController1;
 
 
@@ -40,9 +40,7 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
 
-    phCompressor.enableDigital();
-
-    //m_robotContainer = new RobotContainer();
+    // m_robotContainer = new RobotContainer();
     // XboxController1 = new XboxController(Constants.XboxController1);
     }
 
@@ -94,6 +92,10 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+
+    pcmCompressor.enableDigital();
+    // m_DoubleSolenoid.set(kReverse);
+
   }
 
   /** This function is called periodically during operator control. */
@@ -102,14 +104,21 @@ public class Robot extends TimedRobot {
     double getLeftY = XboxController0.getLeftY();
     double getRightY = XboxController0.getRightY();
 
-    new RunCommand(() -> m_drivetrain.drive(
-        getLeftY,
-        getRightY),
-      m_drivetrain);
+    m_drivetrain.drive(getLeftY, getRightY);
+    // new RunCommand(() -> m_drivetrain.drive(
+    //     getLeftY,
+    //     getRightY),
+    //   m_drivetrain);
     
-    m_catapult.setDefaultCommand(
-      new RunCommand(() -> m_catapult.runCatapult(XboxController0.getLeftBumper()))
-    );
+    // m_catapult.setDefaultCommand(
+    //   new RunCommand(() -> m_catapult.singleSolenoid(
+    //       XboxController0.getLeftBumper()),
+    //     m_catapult)
+    // );
+
+    m_catapult.singleSolenoid(XboxController0.getLeftBumper());
+    m_catapult.doubleSolenoid(XboxController0.getRightTriggerAxis());
+
   }
 
   @Override

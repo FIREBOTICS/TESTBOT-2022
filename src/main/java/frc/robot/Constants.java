@@ -24,6 +24,7 @@ public final class Constants {
     // public static int XboxController1 = 1;
 
     public static int solenoidChannel = 0;
-
+    public static int dSChannelForward = 1;
+    public static int dSChannelBackward = 2;
   
 }
