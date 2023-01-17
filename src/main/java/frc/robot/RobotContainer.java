@@ -38,8 +38,6 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
-    //newVictor.set(ControlMode.PercentOutput, 1);
-    //System.out.println("hello?");
   }
 
   /**
@@ -49,7 +47,6 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    // XboxController0.
   }
 
   /**

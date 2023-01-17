@@ -103,22 +103,30 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     double getLeftY = XboxController0.getLeftY();
     double getRightY = XboxController0.getRightY();
+    System.out.println("left: " + XboxController0.getLeftTriggerAxis());
+    System.out.println("right:" + XboxController0.getRightTriggerAxis());
+    System.out.println();
 
-    m_drivetrain.drive(getLeftY, getRightY);
+    // m_drivetrain.drive(getLeftY, getRightY);
+    /*
     // new RunCommand(() -> m_drivetrain.drive(
     //     getLeftY,
     //     getRightY),
     //   m_drivetrain);
+    */
     
+    /*
     // m_catapult.setDefaultCommand(
     //   new RunCommand(() -> m_catapult.singleSolenoid(
     //       XboxController0.getLeftBumper()),
     //     m_catapult)
     // );
+    */
 
-    m_catapult.singleSolenoid(XboxController0.getLeftBumper());
-    m_catapult.doubleSolenoid(XboxController0.getRightTriggerAxis());
-
+    // m_catapult.singleSolenoid(XboxController0.getLeftBumper());
+    if (XboxController0.getLeftTriggerAxis() > 0)       {m_catapult.doubleSolenoid((short) -1.);}
+    else if (XboxController0.getRightTriggerAxis() > 0) {m_catapult.doubleSolenoid((short) 1);}
+    else           {System.out.println("hello, this is kOff");m_catapult.doubleSolenoid((short) 0);}
   }
 
   @Override
