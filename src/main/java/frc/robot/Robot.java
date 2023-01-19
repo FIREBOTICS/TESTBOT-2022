@@ -115,13 +115,13 @@ public class Robot extends TimedRobot {
     //   m_drivetrain);
     */
     
-    /*
-    // m_catapult.setDefaultCommand(
-    //   new RunCommand(() -> m_catapult.singleSolenoid(
-    //       XboxController0.getLeftBumper()),
-    //     m_catapult)
-    // );
-    */
+    
+    m_catapult.setDefaultCommand(
+      new RunCommand(() -> m_catapult.singleSolenoid(
+          XboxController0.getLeftBumper()),
+        m_catapult)
+    );
+    
 
     // m_catapult.singleSolenoid(XboxController0.getLeftBumper());
     if (XboxController0.getLeftTriggerAxis() > 0)       {m_catapult.doubleSolenoid((short) -1.);}
