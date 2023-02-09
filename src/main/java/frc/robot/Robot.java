@@ -107,7 +107,7 @@ public class Robot extends TimedRobot {
     System.out.println("right:" + XboxController0.getRightTriggerAxis());
     System.out.println();
 
-    // m_drivetrain.drive(getLeftY, getRightY);
+    m_drivetrain.drive(getLeftY, getRightY);
     /*
     // new RunCommand(() -> m_drivetrain.drive(
     //     getLeftY,
